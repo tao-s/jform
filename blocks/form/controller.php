@@ -239,14 +239,14 @@ class FormBlockController extends Concrete5_Controller_Block_Form {
 				//echo $mh->body.'<br>';
 				@$mh->sendMail();
 				if($replyToEmailAddress != $formFormEmailAddress){
-    				$mh = Loader::helper('mail');
+    				$mh->reset();
     				$mh->to( $replyToEmailAddress ); 
     				$mh->from( $formFormEmailAddress ); 
     				$mh->addParameter('formName', $this->surveyName);
     				$mh->addParameter('questionSetId', $this->questionSetId);
     				$mh->addParameter('questionAnswerPairs', $questionAnswerPairs); 
-    				$mh->load('block_form_confirm');
-    				$mh->setSubject(t('Thank you for Submission to %s', $this->surveyName).":".time();
+    				$mh->load('block_form_confirm',"jform");
+    				$mh->setSubject(t('Thank you for Submission to %s', $this->surveyName)).":".time();
     				//echo $mh->body.'<br>';
     				@$mh->sendMail();
 				}
