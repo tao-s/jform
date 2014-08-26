@@ -40,7 +40,7 @@ $miniSurvey->frontEndMode=true;
 	<? } ?>
 	<input name="qsID" type="hidden" value="<?= intval($survey->questionSetId)?>" />
 	<input name="fRegist" type="hidden" value="1" />
-	<dl>
+	<dl class="table">
 	<?php  
 	foreach($questions as $q){
 	?>
