@@ -229,7 +229,7 @@ class FormBlockController extends Concrete5_Controller_Block_Form {
 				
 				$mh = Loader::helper('mail');
 				$mh->to( $this->recipientEmail ); 
-				$mh->from( $formFormEmailAddress ); 
+				$mh->from( $replyToEmailAddress ); 
 				$mh->replyto( $replyToEmailAddress ); 
 				$mh->addParameter('formName', $this->surveyName);
 				$mh->addParameter('questionSetId', $this->questionSetId);
@@ -241,7 +241,7 @@ class FormBlockController extends Concrete5_Controller_Block_Form {
 				if($replyToEmailAddress != $formFormEmailAddress){
     				$mh->reset();
     				$mh->to( $replyToEmailAddress ); 
-    				$mh->from( $formFormEmailAddress ); 
+    				$mh->from( $this->recipientEmail ); 
     				$mh->addParameter('formName', $this->surveyName);
     				$mh->addParameter('questionSetId', $this->questionSetId);
     				$mh->addParameter('questionAnswerPairs', $questionAnswerPairs); 
